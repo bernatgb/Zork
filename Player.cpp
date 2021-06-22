@@ -13,7 +13,7 @@ Player::Player(string name, string description, Room* location, list<Entity*> wo
 	this->worldEntities = worldEntities;
 	this->lockerUnlock = false;
 	this->car = false;
-	this->prisioner = false;
+	this->prisoner = false;
 	this->killer = false;
 }
 
@@ -22,7 +22,7 @@ Player::~Player()
 
 }
 
-void Player::Help() 
+void Player::Help()
 {
 	cout << "You are " << name << description << endl;
 	cout << "To take a look at the room, press L." << endl;
@@ -51,7 +51,7 @@ void Player::Go()
 	vector<Exit*> exits(4);
 	cout << "From here, you can go to:" << endl;
 	Exit* exit = new Exit(NORTH, NULL, NULL, NULL, NULL);
-	
+
 	for (list<Entity*>::iterator it = worldEntities.begin(); it != worldEntities.end(); ++it)
 	{
 		if ((*it)->type == EXIT)
@@ -105,7 +105,7 @@ void Player::Search()
 		if ((*it)->type == ITEM)
 		{
 			Item* item = (Item*)*it;
-			
+
 			// If only to hide the items of the locker.
 			if (item->name == "A gun." || item->name == "Hunter's photo.")
 			{
@@ -175,7 +175,7 @@ void Player::Drop()
 {
 	if (bag.empty())
 		cout << "You don't have any item to drop." << endl << endl;
-	else 
+	else
 	{
 		cout << "You have the next items to drop:" << endl;
 		int itemsCount = 0;
@@ -208,7 +208,7 @@ void Player::Use()
 {
 	if (bag.empty())
 		cout << "You don't have any item to use." << endl << endl;
-	else 
+	else
 	{
 		cout << "You have the next items to use:" << endl;
 		int itemsCount = 0;
@@ -341,7 +341,7 @@ void Player::Talk()
 				if (answer[0] == 'Y' || answer[0] == 'y')
 				{
 					answered2 = true;
-					prisioner = true;
+					prisoner = true;
 					cout << "Okey, c'mon, let's go." << endl << endl;
 
 				}
@@ -376,29 +376,29 @@ void Player::Talk()
 void Player::Escape()
 {
 	// Final 1
-	if (!killer && !prisioner)
+	if (!killer && !prisoner)
 	{
 		cout << "You've waited for the guards' turn change. You runned to the car, entered and escaped with it. You left behind someone who helped you but... Congratulations, now you are free." << endl;
 	}
 
 	// Final 2
-	if (killer && !prisioner)
+	if (killer && !prisoner)
 	{
 		cout << "You've entered as an innocent and you leave as a guilty person. But... Congratulations, now you are free." << endl;
 	}
 
 	// Final 3
-	if (killer && prisioner)
+	if (killer && prisoner)
 	{
 		cout << "You've saved a person and gained a friend for ever and murdered another one. But... Congratulations, now you are free." << endl;
 	}
 
 	// Final 4
-	if (!killer && prisioner)
+	if (!killer && prisoner)
 	{
 		cout << "You were too slow to run to the car without being seen. The guard shooted, and killed you. You died but at least you remained innocent until the end." << endl;
 	}
-		
+
 	cout << "Thanks for playing! Play again to see the other finals." << endl;
 	escaped = true;
 }

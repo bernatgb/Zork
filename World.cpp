@@ -21,7 +21,7 @@ World::World()
 	Room* directors = new Room("the Director's office.", "This is the director's office. There is a desk with a computer and a shelf with books.");
 	entities.push_back(directors); 
 	
-	Room* nursing = new Room("the nursing room.", "This is the nursing room, there is another prisioner in bed.");
+	Room* nursing = new Room("the nursing room.", "This is the nursing room, there is another prisoner in bed.");
 	entities.push_back(nursing); 
 
 	Room* ventilation = new Room("the ventilation pipe.", "The ventilation pipe is dark, you hardly see light at the other side");
@@ -72,7 +72,7 @@ World::World()
 
 
 	// Items
-	Item* letter = new Item("A letter from the previous prisioner of the cell.", "Letter with 4 holes from the previous prisioner of the cell. The letter says: My ticket to freedom! This guard is gonna pay.", cell, "If you put the letter where the numbers are, now you can't see the numbers 0, 1 and the first 9, but you can see the others through the holes");
+	Item* letter = new Item("A letter from the previous prisoner of the cell.", "Letter with 4 holes from the previous prisoner of the cell. The letter says: My ticket to freedom! This guard is gonna pay.", cell, "If you put the letter where the numbers are, now you can't see the numbers 0, 1 and the first 9, but you can see the others through the holes");
 	entities.push_back(letter);
 	cell->AddEntity(letter);
 
@@ -92,15 +92,15 @@ World::World()
 	entities.push_back(wallet);
 	directors->AddEntity(wallet);
 
-	Item* carKey = new Item("Car key.", "A key of the luxury cars' brand Porx.", parking, "If have entered in the director's car, time to say good bye to the prision.");
+	Item* carKey = new Item("Car key.", "A key of the luxury cars' brand Porx.", parking, "If have entered in the director's car, time to say good bye to the prison.");
 	entities.push_back(carKey);
 	directors->AddEntity(carKey);
 
 
 	
 	// NPC
-	NPC* prisioner = new NPC("Prisioner", "Is in bed due to a long-term injury.", nursing);
-	entities.push_back(prisioner);
+	NPC* prisoner = new NPC("Prisoner", "Is in bed due to a long-term injury.", nursing);
+	entities.push_back(prisoner);
 
 
 
@@ -109,7 +109,7 @@ World::World()
 	string playerName;
 	cin >> playerName;
 	cout << endl;
-	Player* player = new Player(playerName, ", an innocent prisioner. Today, 14th of October, is your fist day at jail, but you decided to escape.", cell, entities);
+	Player* player = new Player(playerName, ", an innocent prisoner. Today, 14th of October, is your fist day at jail, but you decided to escape.", cell, entities);
 	cout << "What do you want to do now, " << playerName << "? Press H if you need help in any moment." << endl;
 
 	bool finished = false;
@@ -178,5 +178,3 @@ World::~World()
 {
 
 }
-
-

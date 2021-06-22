@@ -22,6 +22,4 @@ public:
 
 	list<Entity*> entities;
 	Room* currentLocation;
-
-	//void Look();
 };

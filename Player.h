@@ -21,7 +21,7 @@ public:
 	list<Entity*> worldEntities;
 	bool lockerUnlock;
 	bool car;
-	bool prisioner;
+	bool prisoner;
 	bool killer;
 	bool escaped;
 
